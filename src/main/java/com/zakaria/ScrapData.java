@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class scrapData {
-    public static void main(String args[]) {
+public class ScrapData {
+    public JSONObject ScrapDataFromBBC() {
         try {
             // Connect to the website
             Document doc = Jsoup.connect("https://www.bbc.com/sport/football/premier-league/table").get();
@@ -21,7 +21,7 @@ public class scrapData {
             Element table = doc.select("table").first();
             if (table == null) {
                 System.out.println("No table found on the page.");
-                return;
+                return null;
             }
             // Extract table headers
             Elements headers = table.select("thead th");
@@ -55,10 +55,10 @@ public class scrapData {
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("teams", jsonArray);
-
-
+            return jsonObject;
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }
