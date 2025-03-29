@@ -1,4 +1,4 @@
-package com.zakaria;
+package com.zakaria.scraper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScrapData {
-    public JSONObject ScrapDataFromBBC() {
+public class LeagueTableScraper implements Scraper{
+    public JSONObject scrapDataFromBBC() {
         try {
             // Connect to the website
             Document doc = Jsoup.connect("https://www.bbc.com/sport/football/premier-league/table").get();

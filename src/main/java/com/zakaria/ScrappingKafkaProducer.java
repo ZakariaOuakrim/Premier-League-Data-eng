@@ -1,5 +1,6 @@
 package com.zakaria;
 
+import com.zakaria.scraper.LeagueTableScraper;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -22,8 +23,8 @@ public class ScrappingKafkaProducer {
         //scrapping from website
         try{
             System.out.println("Scrapping from BBC");
-            ScrapData scrapData=new ScrapData();
-            scrapData.ScrapDataFromBBC();
+            LeagueTableScraper leagueTableScraper =new LeagueTableScraper();
+            leagueTableScraper.scrapDataFromBBC();
 
 
         }catch (Exception e){
