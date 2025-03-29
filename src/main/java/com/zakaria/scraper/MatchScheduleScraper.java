@@ -12,10 +12,10 @@ public class MatchScheduleScraper implements Scraper{
     @Override
     public JSONObject scrapDataFromBBC() {
         try{
-            System.out.println("Scrapping from BBC");
             //connect to the website
             Document doc = Jsoup.connect("https://www.bbc.com/sport/football/premier-league/scores-fixtures").get();
 
+            //div of the matches
             Elements divOfMatches = doc.select("div.ssrcss-1jkg1a7-HeaderWrapper.e4zdov50");
 
             if(divOfMatches==null){
@@ -60,7 +60,9 @@ public class MatchScheduleScraper implements Scraper{
 
 
 
-        }catch (Exception e){}
+        }catch (Exception e){
+            System.out.println("Error while scrapping Match Schedule data from BBC "+e.getMessage());
+        }
         return null;
     }
 }
