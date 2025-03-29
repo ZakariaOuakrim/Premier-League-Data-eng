@@ -55,6 +55,7 @@ public class LeagueTableScraper implements Scraper{
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("teams", jsonArray);
+
             return jsonObject;
         } catch (IOException e) {
             e.printStackTrace();
