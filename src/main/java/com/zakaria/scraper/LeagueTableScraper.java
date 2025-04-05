@@ -50,6 +50,8 @@ public class LeagueTableScraper implements Scraper{
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("teams", jsonArray);
 
+            System.out.println("League Table: "+jsonObject.toString(4));
+
             return jsonObject;
         } catch (IOException e) {
             System.out.println("Error while trying to scrap League Table data from BBC "+e.getMessage());
