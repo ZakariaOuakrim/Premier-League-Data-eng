@@ -36,6 +36,19 @@ public class LeagueTableTransformer implements TransformerUtils {
             if(obj.has("Drawn") && obj.get("Drawn") instanceof String){
                 obj.put("Drawn", Integer.parseInt(obj.getString("Drawn")));
             }
+
+
+            //create the team position property
+            if(obj.has("Team") && obj.get("Team") instanceof String){
+                //team name and teamPosition
+                String teamName= obj.getString("Team");
+                String[] teamNameAndPosition= teamName.split("(?<=^(1?\\d|20))\\s");
+                obj.put("Position", Integer.parseInt(teamNameAndPosition[0]));
+                obj.put("Team", teamNameAndPosition[1]);
+            }
+            System.out.println("+++object"+obj);
         }
     }
+
+
 }
