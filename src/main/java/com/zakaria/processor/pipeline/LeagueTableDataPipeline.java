@@ -16,5 +16,7 @@ public class LeagueTableDataPipeline implements ProcessingPipeline {
         //transform data
         TransformerUtils transformerUtils = new LeagueTableTransformer();
         transformerUtils.jsonParser(jsonObject);
+
+
     }
 }

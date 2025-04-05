@@ -47,8 +47,30 @@ public class LeagueTableTransformer implements TransformerUtils {
                 obj.put("Team", teamNameAndPosition[1]);
             }
             System.out.println("+++object"+obj);
+
+            //create the last 6 games performance property
+            if(obj.has("Form, Last 6 games, Oldest first") && obj.get("Form, Last 6 games, Oldest first") instanceof  String){
+                last6gamesPerformance(obj.getString("Form, Last 6 games, Oldest first"));
+                obj.remove("Form, Last 6 games, Oldest first");
+            }
         }
     }
 
+
+    private int[] last6gamesPerformance(String obj) {
+        System.out.println("String that I am getting "+obj);
+        String[] last6games = obj.split(" ");
+        byte[] last6gamesPerformance = new byte[last6games.length];
+        for (int i = 0; i < last6games.length; i++) {
+            if (last6games[i].equals("W")) {
+                last6gamesPerformance[i] = 1;
+            } else if (last6games[i].equals("L")) {
+                last6gamesPerformance[i] = -1;
+            } else if (last6games[i].equals("D")) {
+                last6gamesPerformance[i] = 0;
+            }
+        }
+        return null;
+    }
 
 }
