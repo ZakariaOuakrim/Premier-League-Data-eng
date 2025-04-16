@@ -46,11 +46,10 @@ public class LeagueTableTransformer implements TransformerUtils {
                 obj.put("Position", Integer.parseInt(teamNameAndPosition[0]));
                 obj.put("Team", teamNameAndPosition[1]);
             }
-            System.out.println("+++object"+obj);
 
             //create the last 6 games performance property
             if(obj.has("Form, Last 6 games, Oldest first") && obj.get("Form, Last 6 games, Oldest first") instanceof  String){
-                int[] last6performances=last6gamesPerformance(obj.getString("Form, Last 6 games, Oldest first"));
+                byte[] last6performances=last6gamesPerformance(obj.getString("Form, Last 6 games, Oldest first"));
                 obj.remove("Form, Last 6 games, Oldest first");
                 obj.put("games performance",last6performances);
             }
@@ -59,10 +58,10 @@ public class LeagueTableTransformer implements TransformerUtils {
     }
 
 
-    private int[] last6gamesPerformance(String obj) {
+    private byte[] last6gamesPerformance(String obj) {
         String[] last6games = obj.split(" ");
         int indexTable=0;
-        int[] last6gamesPerformance = new int[6];
+        byte[] last6gamesPerformance = new byte[6];
         for (int i = 0; i < 18; i=i+3) {
             if (last6games[i].equals("W")) {
                 last6gamesPerformance[indexTable] = 1;
